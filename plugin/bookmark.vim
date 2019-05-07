@@ -211,7 +211,7 @@ function! BookmarkSave(target_file, silent)
   endif
 endfunction
 command! -nargs=1 SaveBookmarks call CallDeprecatedCommand('BookmarkSave', [<f-args>, 0])
-command! -nargs=1 BookmarkSave call BookmarkSave(<f-args>, 0)
+command! -nargs=1 -complete=file BookmarkSave call BookmarkSave(<f-args>, 0)
 
 function! BookmarkLoad(target_file, startup, silent)
   let supports_confirm = has("dialog_con") || has("dialog_gui")
@@ -243,7 +243,7 @@ function! BookmarkLoad(target_file, startup, silent)
   endif
 endfunction
 command! -nargs=1 LoadBookmarks call CallDeprecatedCommand('BookmarkLoad', [<f-args>, 0, 0])
-command! -nargs=1 BookmarkLoad call BookmarkLoad(<f-args>, 0, 0)
+command! -nargs=1 -complete=file BookmarkLoad call BookmarkLoad(<f-args>, 0, 0)
 
 function! CallDeprecatedCommand(fun, args)
   echo "Warning: Deprecated command, please use ':". a:fun ."' instead"
